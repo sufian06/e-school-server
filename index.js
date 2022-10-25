@@ -11,8 +11,14 @@ app.get('/', (req, res) => {
   res.send('e-school API Running');
 });
 
-app.get('/courses-categories', (req, res) => {
+app.get('/courses', (req, res) => {
   res.send(categories);
+})
+
+app.get('/course/:name', (req, res) => {
+  const name = req.params.name;
+  const selectedCourse = categories.find(course => course.name == name);
+  res.send(selectedCourse);
 })
 
 app.listen(port, () => {
